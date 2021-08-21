@@ -1,0 +1,203 @@
+/* Font */
+@font-face {
+    font-family: 'BebasNeue';
+    src: url(./../font/BebasNeue-Regular.woff) format('woff');
+}
+
+/* style Utama */
+
+body    {
+    font: 18px/36px 'BebasNeue', 'Arial Narrow';
+    background-color: gainsboro;
+}
+
+h1      {
+    font-size: 62px;
+    margin: 50px 0;
+    text-align: center;
+    text-shadow: 3px 3px 2px yellow;
+}
+
+
+
+.container  {
+    width: 680px;
+    background-color: yellow;
+    margin: auto;
+    padding: 10px;
+    box-shadow: 0 0 5px 2px grey;
+    border-radius: 5px;
+}
+
+.gallery li {
+    width: 120px;
+    height: 120px;
+
+    border: 3px solid rgba(27, 27, 25, 0.863);
+    /* overflow: hidden; */
+    float: left;
+    margin-right: 10px;
+    position: relative;
+
+}
+
+.gallery li,
+.gallery li img, 
+.gallery li span    {
+    border-radius: 50%;
+}
+
+.gallery li span    {
+    display: block;
+    width: 120px;
+    height: 120px;
+    background-color: rgba(200, 200, 200, 0.5);
+    position: absolute;
+    top: 0;
+    text-align: center;
+    line-height: 120px;
+    text-shadow: 1px 1px 1px whitesmoke;
+    opacity: 0;
+    transition: 30ms;
+
+
+
+}
+
+.gallery li a:hover span{
+    opacity: 1;
+
+}
+/* .gallery img:hover span{
+
+    transform: scale(2) ;
+
+} */
+
+
+.clear  {
+    clear: both;
+}
+
+
+/* overlay */
+
+.overlay    {
+    position: fixed;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.0);
+    z-index: 100;
+    transition: .7s;
+    text-align: center;
+    padding: 100px;
+}
+
+/* ketika overlay di target maka perintah bottom dan right akan memenuhi seolah memenuhi layar */
+
+.overlay:target {
+    bottom: 0;
+    right: 0;
+    width: auto;
+    height: auto;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.overlay img    {
+    max-height: 100%;
+
+    background-color: yellow;
+
+}
+
+
+.overlay:target img {
+    animation: fadeAja 1s;
+}
+
+
+.overlay .close     {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    margin-left: -20px;
+    color: white;
+    text-decoration: none;
+    background-color: black;
+    border-radius: 50%;
+    padding: 2px;
+    opacity: 0;
+}
+
+.overlay:target .close  {
+    animation: slideDownFade 1s 1s forwards; 
+}
+
+.overlay:target .next,
+.overlay:target .prev {
+    animation: fadeAja .5s .5s forwards; 
+}
+
+
+
+/* Navigasi */
+
+.next, .prev   {
+    width: 60px;
+    height: 93px;
+    background-image: url(../img/next.png);
+    position: absolute;
+    text-indent: -5000px;
+    top: 40%;
+    margin-left: 25px;
+    opacity: 0;
+}
+
+.prev           {
+    background-image: url(../img/prev.png);
+    margin-left: -75px;
+}
+
+
+
+
+/* animasi */
+
+@keyframes fadeAja  {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomDanFade {
+    0%      {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100%    {
+        transform: scale(1);
+        opacity: 1;
+    }
+    
+}
+
+@keyframes slideDownFade {
+
+    0%  {
+        opacity: 0;
+        margin-top: -20px;
+    }
+
+    100%    {
+        opacity: 1;
+        margin-top: 0;
+    }
+    
+}
